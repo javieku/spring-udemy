@@ -11,6 +11,14 @@ public class TrackCoach implements Coach {
 	public TrackCoach() {
 	}
 	
+	void init() {
+		System.out.println("TrackCoach: inside method init");
+	}
+
+	void destroy() {
+		System.out.println("TrackCoach: inside method destroy");
+	}
+	
 	@Override
 	public String getDailyWorkout() {
 		return "Run a hard 5k";
