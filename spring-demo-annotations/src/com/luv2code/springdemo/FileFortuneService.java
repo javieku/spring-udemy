@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +15,11 @@ public class FileFortuneService implements FortuneService {
 	private ArrayList<String> data;
 	
 	FileFortuneService(){
+		
+	}
+	
+	@PostConstruct
+	public void init() {
 		InputStream is = FileFortuneService.class.getResourceAsStream("fortunes.settings");
 		Scanner s = new Scanner(is);
 		data = new ArrayList<String>();
