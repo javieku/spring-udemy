@@ -5,6 +5,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class SoccerCoach implements Coach {
 
+	private FortuneService fortuneService;
+	
+	public SoccerCoach() {}
+	
+	public SoccerCoach(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+	
 	@Override
 	public String getDailyWorkout() {
 		return "Soy Mourinho";
@@ -12,7 +20,7 @@ public class SoccerCoach implements Coach {
 	
 	@Override
 	public String getDailyFortune() {
-		return "Practice your backhand volley";
+		return fortuneService.getFortune();
 	}
 
 }
