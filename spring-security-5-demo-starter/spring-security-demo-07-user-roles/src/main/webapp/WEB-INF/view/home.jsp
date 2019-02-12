@@ -20,11 +20,21 @@
 
     <hr>
 
-    <p>
-        <a href="${pageContext.request.contextPath}/leaders">Leadership Meeting</a> (Only for Manager people)
-    </p>
+    <security:authorize access="hasRole('MANAGER')">
+        <p>
+            <a href="${pageContext.request.contextPath}/leaders">Leadership Meeting</a> (Only for Manager people)
+        </p>
 
-    <hr>
+        <hr>
+    </security:authorize>
+
+    <security:authorize access="hasRole('ADMIN')">
+        <p>
+            <a href="${pageContext.request.contextPath}/systems">IT Systems Meeting</a> (Only for Systems people)
+        </p>
+
+        <hr>
+    </security:authorize>
 
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
         <input type="submit" value="Logout"/>
